@@ -7,13 +7,7 @@
 class SongListGenerator
 {
 
-
-
- static void main(std::vector<std::wstring> &args);
-
-
-
-
-
+ static void main(int argc, const char * argv[])
+    
 
 #endif	//#ifndef SONGLISTGENERATOR

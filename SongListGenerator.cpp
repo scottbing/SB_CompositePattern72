@@ -12,7 +12,7 @@
 #include "SongGroup.h"
 
 
-void SongListGenerator::main(std::vector<std::wstring> &args)
+void SongListGenerator::main(int argc, const char * argv[])
 {
 	
 	SongComponent *industrialMusic = new SongGroup(L"Industrial", L"is a style of experimental music that draws on transgressive and provocative themes");

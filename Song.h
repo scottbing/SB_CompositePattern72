@@ -29,7 +29,7 @@ public:
     virtual int getSongYear() {return songYear;}
     
     virtual void displaySongInfo() {
-        std::cout << getSongName() << " by" << getBandName() << " in " << getSongYear() << std::endl;
+        std::cout << getSongName() << getBandName() << " in " << getSongYear() << std::endl;
     };
 };
 

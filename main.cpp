@@ -10,37 +10,71 @@
 #include "SongComponent.h"
 #include "Song.h"
 #include "SongGroup.h"
-#include "Leaf.h"
-#include "Composite.h"
 
 int main(int argc, const char * argv[])
 {
     
-  SongComponent* song = new Song("Gimme Chocolate!!", "BABYMETAL", 2016);
-  SongComponent* song2 = new Song("Mashimaro", "Tamio Okuda", 2000);
-  
-  SongComponent* sg = new SongGroup();
-  sg->add(song);
-  sg->add(song2);
-  sg->displaySongInfo();
-  std::cout << std::endl;
-  //sg->remove(0);
-  sg->displaySongInfo();
- /*
-  Composite containers[4];
-  
-  int i;
-  for (i = 0; i < 4; i++)
-    for (int j = 0; j < 3; j++)
-      containers[i].add(new Leaf(i *3+j));
+    SongComponent* song = new Song("Industrial", " is a style of experimental music that draws on transgressive and provocative themes", 2013);
+    SongComponent *industrialMusic = new SongGroup();
+    
+    industrialMusic->add(song);
+    industrialMusic->displaySongInfo();
+    
+    SongComponent* song2 = new Song("\nHeavy Metal", " is a genre of rock that developed in the late 1960s, largely in the UK and in the US", 2017);
+    SongComponent *heavyMetalMusic = new SongGroup();
+    
+    heavyMetalMusic->add(song2);
+    heavyMetalMusic->displaySongInfo();
+    
+    SongComponent* song3 = new Song("\nDubstep", " is a genre of electronic dance music that originated in South London, England", 2017);
+    SongComponent *dubstepMusic = new SongGroup();
+    
+    dubstepMusic->add(song3);
+    dubstepMusic->displaySongInfo();
+    
+    // Top level component that holds everything
+    SongComponent* song4 = new Song("Song List", "Every Song available", 2017);
+    SongComponent *everySong = new SongGroup();
+    everySong->add(song4);
+    
+    // Composite that holds individual groups of songs
+    // This holds Songs plus a SongGroup with Songs
 
-  for (i = 1; i < 4; i++)
-    containers[0].add(&containers[i]);
+    everySong->add(industrialMusic);
+    industrialMusic->add(new Song("Head Like a Hole", "NIN", 1990));
+    industrialMusic->add(new Song("Headhunter", "Front 242", 1988));
 
-  for (i = 0; i < 4; i++)
-  {
-    containers[i].traverse();
-    std::cout << std::endl;
-  }
-    */
+    industrialMusic->add(dubstepMusic);
+    dubstepMusic->add(new Song("Centipede", "Knife Party", 2012));
+    dubstepMusic->add(new Song("Tetris", "Doctor P", 2011));
+
+    // This is a SongGroup that just holds Songs
+    everySong->add(heavyMetalMusic);
+    heavyMetalMusic->add(new Song("War Pigs", "Black Sabath", 1970));
+    heavyMetalMusic->add(new Song("Ace of Spades", "Motorhead", 1980));
+    
+    everySong->displaySongInfo();
+
+    // Homework 7.2 Part 5
+    SongComponent *electronicMusic = new SongGroup();
+    electronicMusic->add(industrialMusic);
+    electronicMusic->add(dubstepMusic);
+    
+    electronicMusic->displaySongInfo();
+    
+    // establish Speedcore and ExtraTone Hierarchy
+    SongComponent* song5 = new Song("\nExtraTone", " is a genre of electronic music that  that is characterized by a high tempo and aggressive themes", 2017);
+    SongComponent *speedCore = new SongGroup();
+    SongComponent *extraTone = new SongGroup();
+    extraTone->add(song5);
+    extraTone->add(new Song("Crazy Beauties", "Diabarha", 2014));
+    extraTone->add(new Song("Alone in the Dark", "Cemetary Keeper", 2013));
+    extraTone->add(new Song("Vampires", "Faces of Humanity", 2013));
+    
+    speedCore->add(extraTone);
+    
+    speedCore->displaySongInfo();
+    
+    
+
 }
